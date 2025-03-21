@@ -10,3 +10,5 @@
 
 ![Risk Analysis Page 5](https://github.com/RemaniSA/Risk-Analysis-Project/blob/main/Task%20Images/RACW_p5.jpeg)
 
+![Risk Analysis Page 5](https://github.com/RemaniSA/Risk-Analysis-Project/blob/main/Task%20Images/RACW_p5.jpeg)
+
