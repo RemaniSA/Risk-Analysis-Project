@@ -31,7 +31,7 @@ Risk-Analysis-Project/
 ├── Prices.xlsx                     # Daily asset prices (6 tech stocks)
 ├── Report.pdf                      # Final write-up with results and interpretation
 ├── Task.pdf                        # Coursework brief
-├── Code/                           # MATLAB scripts for each task
+├── Codes                           # MATLAB scripts for each task
 └── README.md
 ```
 
