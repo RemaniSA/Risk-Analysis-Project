@@ -51,15 +51,8 @@ Risk-Analysis-Project/
 All code is implemented in MATLAB. To execute:
 
 1. Ensure the dataset (`Prices.xlsx`) is in the working directory.
-2. Open `main_script.m` (or equivalent script name).
+2. Open `script.m` (for the script of interest).
 3. Set `figswitch = 1` and `resultswitch = 1` to save outputs to `/Images/` and `/Results/`.
-
-```matlab
-% Example
-figswitch = 1;
-resultswitch = 1;
-run('Code/main_script.m');
-```
 
 ## Methods
 
