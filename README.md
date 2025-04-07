@@ -1,38 +1,37 @@
-# Risk Analysis Project (2024/25)
+# Risk Analysis Project
 
-This project was developed as part of the MSc Mathematical Trading and Finance programme at Bayes Business School (formerly Cass). It explores risk estimation techniques across multiple levels of market and portfolio analysis using MATLAB. The project investigates Value-at-Risk (VaR) methodologies, backtesting procedures, and portfolio risk decomposition across both parametric and non-parametric frameworks.
+This project was developed as part of the MSc Mathematical Trading and Finance programme at Bayes Business School (formerly Cass). It investigates risk estimation and portfolio construction across a high-volatility asset universe, with a particular focus on Value-at-Risk (VaR), the need for a coherent risk measure like Expected Shortfall, and the impact of distributional assumptions on tail risk metrics.
 
-## Overview
+## Problem
 
-The analysis is conducted using daily adjusted closing prices of six large-cap technology stocks from 2014 to 2024. The project is structured around three key tasks:
+Value-at-Risk is widely taught as a standard measure of portfolio risk. However, applying it in practice reveals deeper modelling choices. Should we use parametric or non-parametric methods? Can we assume normality, or do our data exhibit fat tails? This project explored these questions across three tasks: VaR estimation and backtesting, multi-day loss forecasting, and portfolio risk decomposition for six US tech stocks.
 
-1. **VaR Estimation and Backtesting** – Rolling-window VaR forecasts at 90% and 99% confidence using six methods: 
-   - Standard Bootstrap
-   - Block Bootstrap
-   - Filtered Block Bootstrap (GARCH)
-   - Gaussian
-   - Student's T (via Method of Moments)
-   - EWMA (RiskMetrics)
+## My Reflections
 
-2. **Multi-Day Loss Estimation** – Comparison of empirical (bootstrapped) and Gaussian estimates for cumulative loss probabilities over a 50-day horizon.
+This project reshaped how I think about risk. We often speak of VaR as a one-size-fits-all measure, but its utility depends heavily on distributional fit. In our case, the dataset consisted of volatile tech stocks that clearly violated Gaussian assumptions. We implemented bootstrapped and parametric VaRs, but their poor backtest results made it obvious that something more robust was needed. I proposed and implemented the filtered block bootstrap to better account for regime shifts and preserve autocorrelation. It worked, and it sparked the idea for my dissertation. On the portfolio side, I gained a much deeper appreciation for how risk-aware portfolio design can differ from naïve equal weighting. Modelling Expected Shortfall also drove home its theoretical superiority to VaR, especially once we saw how distributional failures compound at the tails. Risk isn’t an afterthought; it’s a design constraint.
 
-3. **Portfolio Risk Decomposition** – Out-of-sample comparison of four strategies:
-   - Equally Weighted
-   - Risk Parity (Parametric)
-   - Maximum Diversification
-   - Risk Parity (Non-Parametric)
+## Methods
+
+- VaR Estimation: Gaussian, Student’s T, EWMA, Standard Bootstrap, Block Bootstrap, Filtered Block Bootstrap (GARCH)
+- Backtesting: Kupiec’s Proportion of Failures (POF), Christoffersen’s Conditional Coverage, KS tests on PIT values
+- Loss Forecasting: Gaussian vs empirical comparison for multi-day losses
+- Portfolio Optimisation: Risk Parity (parametric and non-parametric), Maximum Diversification, Component VaR
 
 ## Repository Structure
 
 ```
 Risk-Analysis-Project/
-├── Images/                         # Visual outputs from VaR and portfolio analyses
-├── Results/                        # Saved tables and backtesting outputs
-├── Prices.xlsx                     # Daily asset prices (6 tech stocks)
-├── Report.pdf                      # Final write-up with results and interpretation
-├── Task.pdf                        # Coursework brief
-├── Codes                           # MATLAB scripts for each task
-└── README.md
+├── Images/
+├── Results/
+├── Task Images/
+├── .gitignore
+├── Prices.xlsx
+├── README.md
+├── Report.pdf
+├── Task.pdf
+├── q1.m
+├── q2.m
+├── q5.m
 ```
 
 ## Results Summary
@@ -44,37 +43,36 @@ Risk-Analysis-Project/
 | Maximum Diversification| 1.30         | -0.138       | 8                     | 0.418                    |
 | Risk Parity (Non-Param)| 1.28         | -0.140       | 7                     | 0.412                    |
 
-> Backtesting and probability integral transform (PIT) analysis were applied to assess model calibration and distributional accuracy.
+> Backtesting and PIT analysis highlighted distributional misfit under standard VaR methods, reinforcing the motivation for using Expected Shortfall in high-volatility regimes.
+
+## Requirements
+
+```bash
+Requires MATLAB with Statistics and Econometrics Toolboxes.
+```
 
 ## How to Run
 
-All code is implemented in MATLAB. To execute:
+1. Open MATLAB and navigate to the project folder
+2. Load `Prices.xlsx` into the workspace
+3. Open any question script (e.g. `q1.m`, `q2.m`, `q5.m`) and run sections individually
+4. Ensure any saved results are written to `/Images` and `/Results` folders as required
 
-1. Ensure the dataset (`Prices.xlsx`) is in the working directory.
-2. Open `script.m` (for the script of interest).
-3. Set `figswitch = 1` and `resultswitch = 1` to save outputs to `/Images/` and `/Results/`.
+## Further Reading
 
-## Methods
-
-- **VaR Estimation**: Gaussian, T-distribution, EWMA, GARCH-filtered Bootstrap, Block Bootstrap, Non-parametric
-- **Backtesting**: Kupiec’s POF, Christoffersen’s Conditional Coverage, KS tests on PIT
-- **Portfolio Optimisation**: Risk Parity (param/np), Maximum Diversification, Component VaR decomposition
+- Jorion, P.: *Value at Risk: The New Benchmark for Managing Financial Risk*
+- Christoffersen, P.: *Elements of Financial Risk Management*
 
 ## Authors
 
-- Shaan Ali Remani  
-- Basil Ibrahim  
-- José Santos  
+- Shaan Ali Remani
+- Basil Ibrahim
 - Wincy So
+- José Santos
 
-# Coursework Brief
+---
 
-![Risk Analysis Page 1](https://github.com/RemaniSA/Risk-Analysis-Project/blob/main/Task%20Images/RACW_p1.jpg)
+### Connect
 
-![Risk Analysis Page 2](https://github.com/RemaniSA/Risk-Analysis-Project/blob/main/Task%20Images/RACW_p2.jpg)
-
-![Risk Analysis Page 3](https://github.com/RemaniSA/Risk-Analysis-Project/blob/main/Task%20Images/RACW_p3.jpg)
-
-![Risk Analysis Page 4](https://github.com/RemaniSA/Risk-Analysis-Project/blob/main/Task%20Images/RACW_p4.jpg)
-
-![Risk Analysis Page 5](https://github.com/RemaniSA/Risk-Analysis-Project/blob/main/Task%20Images/RACW_p5.jpg)
+- [LinkedIn](https://www.linkedin.com/in/shaan-ali-remani)  
+- [GitHub](https://github.com/RemaniSA)
